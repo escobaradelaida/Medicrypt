@@ -25,7 +25,7 @@ def test_window():
 
     root = tk.Tk()
     root.title('This is my test window')
-    root.geometry("1080x1080")  # setting the size for main window'
+    root.geometry("900x900")  # setting the size for main window'
 
     # add image to background???
 
