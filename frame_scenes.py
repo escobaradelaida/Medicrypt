@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import font
 from PIL import Image, ImageTk
 from page_one import PageOne
+from page_two import PageTwo
 
 
 class AppWindows(tk.Tk):
@@ -86,8 +87,8 @@ class StartPage(tk.Frame):
         label = tk.Label(self, text='This is the start page', font=controller.title_font, bg="white")
         label.pack(side='top', fill='x', pady=10)
 
-        button1 = tk.Button(self, text='Go to Page One', command=lambda: controller.show_frame('PageOne'))
-        button2 = tk.Button(self, text='Go to Page Two', command=lambda: controller.show_frame('PageTwo'))
+        button1 = tk.Button(self, text='Go to Encryption', command=lambda: controller.show_frame('PageOne'))
+        button2 = tk.Button(self, text='Go to Decryption', command=lambda: controller.show_frame('PageTwo'))
 
         button1.pack()
         button2.pack()
@@ -109,27 +110,6 @@ class StartPage(tk.Frame):
             # if they put in the wrong creds, give error message
             self.error_label.config(text="Credentials are incorrect. Please try again.")
 
-class PageTwo(tk.Frame):
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-
-        # Load the image using PIL
-        self.bg_image = Image.open('medicrypt_HQ.png')
-        self.bg_photo = controller.resize_image(self.bg_image, 800, 600)
-
-        # Create a label to display the background image
-        self.bg_label = tk.Label(self, image=self.bg_photo)
-        self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
-
-        label = tk.Label(self, text='This is page two', font=controller.title_font)
-        label.pack(side='top', fill='x', pady=10)
-
-        button = tk.Button(self, text='Go to the Start Page', command=lambda: controller.show_frame('StartPage'))
-        button.pack()
-
-        label.lift()
-        button.lift()
 
 
 if __name__ == '__main__':
